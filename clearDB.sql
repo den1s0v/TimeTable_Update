@@ -1,0 +1,11 @@
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE timetable.timetable_task;
+TRUNCATE timetable.timetable_snapshot;
+TRUNCATE timetable.timetable_setting;
+TRUNCATE timetable.tag;
+TRUNCATE timetable.storage;
+TRUNCATE timetable.resource_tags;
+TRUNCATE timetable.resource;
+TRUNCATE timetable.file_version;
+TRUNCATE timetable.timetable_task;
+SET FOREIGN_KEY_CHECKS = 1;

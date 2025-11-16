@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="icon" href="{% static 'image/icon.png' %}" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Расписания</title>
+  <link rel="stylesheet" href="{% static 'style/style.css' %}">
+  <script src="{% static 'src/main.js' %}"></script>
+</head>
+
+<body>
+
+<!-- Заголовок -->
+<header onclick="scrollToTop()">
+  <div class="header-content">
+    <img src="{% static 'image/Logo_vstu_rus.png' %}" alt="Логотип ВУЗа" class="logo">
+    <h1 class="title">Расписания</h1>
+  </div>
+</header>
+
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+<!-- Основной контент -->
+<main>
+  <div class="schedule-grid">
+    <!-- Карточка расписания занятий -->
+    <a href="{% url 'timetable_choose_degree' %}" class="card">
+      <h2 class="card-title">Расписание занятий</h2>
+      <div class="separator-line"></div>
+      <img src="{% static 'image/schedule-icon.png' %}" alt="Расписание занятий" class="card-image">
+    </a>
+
+    <!-- Пример других карточек -->
+    <a href="{% url 'bells_timetable' %}" class="card">
+      <h2 class="card-title">Расписание звонков</h2>
+      <div class="separator-line"></div>
+      <img src="{% static 'image/bells-icon.png' %}" alt="Расписание звонков" class="card-image">
+    </a>
+
+    <!-- Кликабельная карточка расписания учебно-тренировочных занятий -->
+    <a href="{% url 'sports_timetable' %}" class="card">
+      <h2 class="card-title">Расписание учебно-тренировочных занятий в спортивных отделениях</h2>
+      <div class="separator-line"></div>
+      <img src="{% static 'image/sports-icon.png' %}" alt="Расписание учебно-тренировочных занятий в спортивных отделениях" class="card-image">
+    </a>
+
+    <!-- Кликабельная карточка расписания экзаменов -->
+    <a href="{% url 'exams_choose_degree' %}" class="card">
+      <h2 class="card-title">Расписание экзаменов</h2>
+      <div class="separator-line"></div>
+      <img src="{% static 'image/exams-icon.png' %}" alt="Расписание экзаменов" class="card-image">
+    </a>
+
+    <!-- Кликабельная карточка календарного графика учебного процесса -->
+    <a href="academic-calendar.html" class="card">
+      <h2 class="card-title">Календарный график учебного процесс</h2>
+      <div class="separator-line"></div>
+      <img src="{% static 'image/calendar-icon.png' %}" alt="Календарный график учебного процесса" class="card-image">
+    </a>
+
+    <!-- Кликабельная карточка графика консультаций и защит -->
+    <a href="consultations.html" class="card">
+      <h2 class="card-title">График консультаций и защит</h2>
+      <div class="separator-line"></div>
+      <img src="{% static 'image/consultations-icon.png' %}" alt="График консультаций и защит" class="card-image">
+    </a>
+
+    <!-- Кликабельная карточка цифровой кафедры -->
+    <a href="digital-department.html" class="card">
+      <h2 class="card-title">Цифровая кафедра</h2>
+      <div class="separator-line"></div>
+      <img src="{% static 'image/digital-icon.png' %}" alt="Цифровая кафедра" class="card-image">
+    </a>
+  </div>
+
+  <!-- Кнопка прокрутки вверх -->
+  <div id="scrollToTop" class="scroll-to-top">
+    <img src="{% static 'image/arrow-up-icon.png' %}" alt="Вверх">
+  </div>
+
+</main>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" href="{% static 'image/icon.png' %}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписания занятий</title>
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <script src="{% static 'src/main.js' %}"></script>
+</head>
+<body class="schedule-study-degree-page">
+
+<script>
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+<!-- Заголовок -->
+<header onclick="scrollToTop()">
+    <div class="header-content">
+        <a href="{% url 'index' %}">
+            <img src="{% static 'image/Logo_vstu_rus.png' %}" alt="Логотип ВУЗа" class="logo">
+        </a>
+        <h1 class="title" id="scheduleTitle">Расписания занятий на <span id="semester"></span> семестр <span id="yearRange"></span> года</h1>
+    </div>
+</header>
+
+<!-- Основной контент -->
+<main>
+
+    <div class="button-container">
+        <a href="{% url 'index' %}">
+            <button class="back-button">Вернуться на главную страницу</button>
+        </a>
+    </div>
+
+    <div class="degree-cards-container">
+        {% for degree in degrees %}
+        <a href="{% url 'timetable' %}{{ degree.params }}" class="degree-card {{ degree.css_class }}">
+            <h2 class="degree-title">{{ degree.title }}</h2>
+            <div class="degree-card-separator-line {{ degree.separator_class }}"></div>
+            <img src="{% static 'image/'|add:degree.image %}" alt="{{ degree.title }}" class="degree-image">
+        </a>
+        {% endfor %}
+    </div>
+
+    <!-- Кнопка прокрутки вверх -->
+    <div id="scrollToTop" class="scroll-to-top">
+        <img src="{% static 'image/arrow-up-icon.png' %}" alt="Вверх">
+    </div>
+
+</main>
+
+</body>
+</html>

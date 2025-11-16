@@ -1,0 +1,39 @@
+# Создать .gitignore с содержимым для Python
+cat > .gitignore << EOF
+# Virtual environment
+myenv/
+venv/
+env/
+.venv/
+
+.old.git
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+EOF
+.env
+temp/
+
+static/files
+
+auth

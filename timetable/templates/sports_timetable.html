@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="icon" href="{% static 'image/icon.png' %}" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Расписания учебно-тренировочных занятий в спортивных отделениях</title>
+  <link rel="stylesheet" href="{% static 'style/style.css' %}">
+  <script src="{% static 'src/main.js' %}"></script>
+</head>
+
+<body>
+<!-- Заголовок -->
+<header>
+  <div class="header-content">
+    <a href="{% url 'index' %}">
+      <img src="{% static 'image/Logo_vstu_rus.png' %}" alt="Логотип ВУЗа" class="logo">
+    </a>
+    <h1 onclick="scrollToTop()" class="title">Расписание учебно-тренировочных занятий в спортивных отделениях</h1>
+  </div>
+</header>
+
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'style/style.css' %}">
+  <title>Расписание спортивных занятий</title>
+</head>
+<body>
+<table class="sports-schedule">
+  <thead>
+  <tr>
+    <th>Вид спорта</th>
+    <th>Понедельник</th>
+    <th>Вторник</th>
+    <th>Среда</th>
+    <th>Четверг</th>
+    <th>Пятница</th>
+    <th>Суббота</th>
+    <th>Тренер-преподаватель</th>
+    <th>Место проведения занятий</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1. Бадминтон</td>
+    <td>7<sup>00</sup>-8<sup>30</sup></td>
+    <td>-</td>
+    <td>7<sup>00</sup>-8<sup>30</sup></td>
+    <td>-</td>
+    <td>7<sup>00</sup>-8<sup>30</sup></td>
+    <td>-</td>
+    <td>Романовский А.С., Яковлев А.А.</td>
+    <td>Спортзал ВолгГТУ (ГУК)</td>
+  </tr>
+  <tr>
+    <td>2. Гандбол (жен)</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>Сурнина С.В.</td>
+    <td>Спортзал ВолгГТУ (ГУК)</td>
+  </tr>
+  <tr>
+    <td>3. Гандбол (муж)</td>
+    <td>19<sup>00</sup>-20<sup>30</sup></td>
+    <td>-</td>
+    <td>19<sup>00</sup>-20<sup>30</sup></td>
+    <td>-</td>
+    <td>19<sup>00</sup>-20<sup>30</sup></td>
+    <td>-</td>
+    <td>Борисов Д.С.</td>
+    <td>Спортзал ВолгГТУ (ГУК)</td>
+  </tr>
+  <tr>
+    <td>4. Волейбол (м)</td>
+    <td>20<sup>30</sup>-22<sup>00</sup></td>
+    <td>-</td>
+    <td>20<sup>30</sup>-22<sup>00</sup></td>
+    <td>-</td>
+    <td>20<sup>30</sup>-22<sup>00</sup></td>
+    <td>-</td>
+    <td>Косов О.Д.</td>
+    <td>Спортзал ВолгГТУ (ГУК)</td>
+  </tr>
+  <tr>
+    <td>5. Волейбол "Здоровье"</td>
+    <td>-</td>
+    <td>7<sup>00</sup>-8<sup>30</sup></td>
+    <td>-</td>
+    <td>7<sup>00</sup>-8<sup>30</sup></td>
+    <td>-</td>
+    <td>7<sup>00</sup>-8<sup>30</sup></td>
+    <td>Федянов Е.А.</td>
+    <td>Спортзал ВолгГТУ (ГУК)</td>
+  </tr>
+  <tr>
+    <td>6. Волейбол (жен)</td>
+    <td>-</td>
+    <td>19<sup>00</sup>-20<sup>30</sup></td>
+    <td>-</td>
+    <td>19<sup>00</sup>-20<sup>30</sup></td>
+    <td>-</td>
+    <td>19<sup>00</sup>-20<sup>30</sup></td>
+    <td>Володина И.А.</td>
+    <td>Спортзал ВолгГТУ (ГУК)</td>
+  </tr>
+  <tr>
+    <td>7. Б/бол (жен)</td>
+    <td>-</td>
+    <td>17<sup>30</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>30</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>30</sup>-19<sup>00</sup></td>
+    <td>Ерошенко И.А.</td>
+    <td>Спортзал ВолгГТУ (ГУК)</td>
+  </tr>
+  <tr>
+    <td>8. Б/бол (муж)</td>
+    <td>-</td>
+    <td>20<sup>30</sup>-22<sup>00</sup></td>
+    <td>-</td>
+    <td>20<sup>30</sup>-22<sup>00</sup></td>
+    <td>-</td>
+    <td>20<sup>30</sup>-22<sup>00</sup></td>
+    <td>Барашков С.А.</td>
+    <td>Спортзал ВолгГТУ (ГУК)</td>
+  </tr>
+  <tr>
+    <td>9. Пауэрлифтинг</td>
+    <td>18<sup>30</sup>-21<sup>30</sup></td>
+    <td>-</td>
+    <td>18<sup>30</sup>-21<sup>30</sup></td>
+    <td>-</td>
+    <td>18<sup>30</sup>-21<sup>30</sup></td>
+    <td>-</td>
+    <td>Долгов А.А.</td>
+    <td>Спортзал ВолгГТУ (ГУК)</td>
+  </tr>
+  <tr>
+    <td>10. Н/теннис</td>
+    <td>17<sup>00</sup>-20<sup>30</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-20<sup>00</sup></td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Ушаков В.В., Дуюнов П.Ю.</td>
+    <td>Зал настольного тенниса (УЛК №5), ЛК-302</td>
+  </tr>
+  <tr>
+    <td>11. Дартс</td>
+    <td>15<sup>00</sup>-16<sup>30</sup></td>
+    <td>-</td>
+    <td>15<sup>00</sup>-16<sup>30</sup></td>
+    <td>-</td>
+    <td>15<sup>00</sup>-16<sup>30</sup></td>
+    <td>-</td>
+    <td>Кузнецова Н.В.</td>
+    <td>Зал силовых видов спорта (УЛК №5)</td>
+  </tr>
+  <tr>
+    <td>12. Т/атлетика</td>
+    <td>-</td>
+    <td>18<sup>00</sup>-20<sup>00</sup></td>
+    <td>-</td>
+    <td>18<sup>00</sup>-20<sup>00</sup></td>
+    <td>-</td>
+    <td>12<sup>00</sup>-14<sup>00</sup></td>
+    <td>Козлов И.В., Горбунов А.В.</td>
+    <td>Зал силовых видов спорта (УЛК №5)</td>
+  </tr>
+  <tr>
+    <td>13. Пауэрлифтинг</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>Николаев Е.В.</td>
+    <td>Зал силовых видов спорта (УЛК №5)</td>
+  </tr>
+  <tr>
+    <td>14. Пауэрлифтинг</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>Амазян Д.Г.</td>
+    <td>Зал силовых видов спорта (УЛК №5)</td>
+  </tr>
+  <tr>
+    <td>15. Гиревой спорт</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>Манжела М.В.</td>
+    <td>Тренажерный зал общежития №1</td>
+  </tr>
+  <tr>
+    <td>16. Армспорт</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-19<sup>00</sup></td>
+    <td>-</td>
+    <td>Гладких А.С.</td>
+    <td>Тренажерный зал общежития №1</td>
+  </tr>
+  <tr>
+    <td>17. Л/атлетика</td>
+    <td>17<sup>30</sup>-19<sup>30</sup></td>
+    <td>-</td>
+    <td>17<sup>30</sup>-19<sup>30</sup></td>
+    <td>-</td>
+    <td>17<sup>30</sup>-19<sup>30</sup></td>
+    <td>-</td>
+    <td>Грошев В.В., Черных А.Т., Тамаров И.С.</td>
+    <td>Парк Победы</td>
+  </tr>
+  <tr>
+    <td>18. Мини-футбол</td>
+    <td>-</td>
+    <td>18<sup>00</sup>-19<sup>30</sup></td>
+    <td>-</td>
+    <td>18<sup>00</sup>-19<sup>30</sup></td>
+    <td>-</td>
+    <td>10<sup>00</sup>-12<sup>00</sup></td>
+    <td>Давыдов С.А., Зуйков Д.С.</td>
+    <td>Общежитие №1 (или зал УЛК-№5)</td>
+  </tr>
+  <tr>
+    <td>19. Плавание (ОФП)</td>
+    <td>18<sup>30</sup>-20<sup>00</sup></td>
+    <td>-</td>
+    <td>19<sup>00</sup>-19<sup>30</sup></td>
+    <td>-</td>
+    <td>19<sup>00</sup>-19<sup>30</sup></td>
+    <td>-</td>
+    <td>Прыткова Е.Г.</td>
+    <td>Общежитие №1 (или зал УЛК-№5)</td>
+  </tr>
+  <tr>
+    <td>20. Фитнес-аэробика</td>
+    <td>17<sup>00</sup>-18<sup>30</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-18<sup>30</sup></td>
+    <td>-</td>
+    <td>17<sup>00</sup>-18<sup>30</sup></td>
+    <td>-</td>
+    <td>Низовцева Ю.А.</td>
+    <td>Зал фитнес-аэробики (УЛК-№5)</td>
+  </tr>
+  </tbody>
+</table>
+<!-- Кнопка прокрутки вверх -->
+<div id="scrollToTop" class="scroll-to-top">
+  <img src="{% static 'image/arrow-up-icon.png' %}" alt="Вверх">
+</div>
+</body>
+</html>

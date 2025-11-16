@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_DATABASE: timetable
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: django_user
+      MYSQL_PASSWORD: django_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        GITHUB_TOKEN: ${GITHUB_TOKEN}  # Берётся из .env
+    container_name: django_app
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=timetable
+      - MYSQL_USER=django_user
+      - MYSQL_PASSWORD=django_pass
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - static_volume:/app/staticfiles
+      - logs_volume:/app/logs
+      - temp_volume:/app/temp
+    # УБРАЛИ: - .:/app  ← больше не нужно!
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+      - "81:81"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - static_volume:/app/staticfiles
+    depends_on:
+      - web
+
+volumes:
+  mysql_data:
+  static_volume:
+  logs_volume:
+  temp_volume:

@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="icon" href="{% static 'image/icon.png' %}" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Расписание звонков</title>
+  <link rel="stylesheet" href="{% static 'style/style.css' %}">
+  <script src="{% static 'src/main.js' %}"></script>
+
+</head>
+
+<body>
+<!-- Заголовок -->
+<header onclick="scrollToTop()">
+  <div class="header-content">
+    <a href="{% url 'index' %}">
+      <img src="{% static 'image/Logo_vstu_rus.png' %}" alt="Логотип ВУЗа" class="logo">
+    </a>
+    <h1 class="title" id="scheduleTitle">Расписания звонков</h1>
+  </div>
+</header>
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+<main>
+  <div class="button-container">
+   <a href="{% url 'index' %}"><button class="back-button">Вернуться на главную страницу</button></a>
+  </div>
+  <div class="schedule-bell-container">
+    <table class="schedule-bell-table">
+      <thead>
+      <tr>
+        <th>Учебные часы</th>
+        <th>Время начала и окончания занятий</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>1</td>
+        <td>8:30 - 9:15</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>9:20 - 10:00</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>10:10 - 10:55</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>11:00 - 11:40</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>11:50 - 12:35</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>12:40 - 13:20</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>13:40 - 14:25</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>14:30 - 15:10</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>15:20 - 16:05</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>16:10 - 16:50</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>17:00 - 17:45</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>17:50 - 18:30</td>
+      </tr>
+      <tr>
+        <td>13-14</td>
+        <td>18:35 - 20:00</td>
+      </tr>
+      <tr>
+        <td>15-16</td>
+        <td>20:05 - 21:30</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+<!-- Кнопка прокрутки вверх -->
+<div id="scrollToTop" class="scroll-to-top">
+  <img src="{% static 'image/arrow-up-icon.png' %}" alt="Вверх">
+</div>
+</body>
+</html>

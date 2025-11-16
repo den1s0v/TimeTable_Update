@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" href="{% static 'image/icon.png' %}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.95">
+    <title>{{ head_title }}</title>
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <script src="{% static 'src/timetable_list.js' %}"></script>
+</head>
+
+<body class="{{ page_class }}">
+<!-- Заголовок -->
+<header onclick="scrollToTop()">
+    <div class="header-content">
+        <a href="{% url 'index' %}">
+            <img src="{% static 'image/Logo_vstu_rus.png' %}" alt="Логотип ВУЗа" class="logo">
+        </a>
+        <h1 class="title" id="scheduleTitle">{{ schedule_title }} на <span id="semester"></span> семестр <span id="yearRange"></span> года</h1>
+    </div>
+</header>
+
+<div class="main-container">
+    <!-- Левая колонка с карточкой и кнопкой -->
+    <div class="left-column">
+        <div class="degree-card {{ degree_card_class }} custom-degree-card no-animation">
+            <div class="degree-title">{{ degree_title }}</div>
+            <div class="degree-card-separator-line {{ degree_separator_class }}"></div>
+            <img src="{% static degree_image %}" alt="{{ degree_title }}" class="degree-image">
+        </div>
+        <div class="button-container">
+            {% if 'exams' in request.path %}
+                <a href="{% url 'exams_choose_degree' %}">
+            {% elif 'timetable' in request.path %}
+                <a href="{% url 'timetable_choose_degree' %}">
+            {% endif %}
+                    <button class="back-button">Вернуться назад</button>
+                </a>
+                
+            <a href="{% url 'index' %}">
+                <button class="back-button">Вернуться на главную страницу</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Правая колонка с фильтрами и расписанием -->
+    <div class="right-column">
+        <div class="filter-schedule-container">
+            <!-- Блок фильтров -->
+            <div id="filter-container" class="filter-container">
+                <!--
+                <select id="first-select" class="filter-select" name="{{ first_select_name }}">
+                    <option value="" disabled selected>Выбрать форму обучения</option>
+                    {% for item in first_select_items %}
+                    <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+                <div class="button-filter-container">
+                    <button type="button" class="apply-button">Применить фильтр</button>
+                    <button class="reset-filter-button" onclick="resetFilters()">Сбросить фильтр</button>
+                </div>-->
+            </div>
+
+            <!-- Блок расписания -->
+            <div id="schedule-container" class="schedule-container">
+                {% if 'timetable' in request.path %}
+                <p class="chapter-title">Актуальное расписание занятий:</p>
+                {% elif 'exams' in request.path %}
+                <p class="chapter-title">Актуальное расписание экзаменов:</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Кнопка прокрутки вверх -->
+<div id="scrollToTop" class="scroll-to-top">
+    <img src="{% static 'image/arrow-up-icon.png' %}" alt="Вверх">
+</div>
+
+<script>
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    const type_required_key = "{{ type_required_key }}";
+    const type_required_value = "{{ type_required_value }}";
+    const degree_required_key = "{{ degree_required_key }}";
+    const degree_required_value = "{{ degree_required_value }}";
+    makeRequest()
+</script>
+
+</body>
+</html>
