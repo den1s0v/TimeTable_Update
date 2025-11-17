@@ -1,8 +1,9 @@
 # timetable/apps.py
-from pathlib import Path
-from django.apps import AppConfig
-import threading
 import logging
+import sys
+import threading
+
+from django.apps import AppConfig
 
 logger = logging.getLogger(__name__)
 
@@ -21,12 +22,18 @@ class TimetableConfig(AppConfig):
     name = "timetable"
 
     def ready(self):
-        # Запускаем крон только в главном потоке и не в миграциях
+        # если запускается manage.py migrate/makemigrations/collectstatic — выходим
+        cmds_to_skip = {"migrate", "makemigrations", "collectstatic"}
+        if len(sys.argv) > 1 and sys.argv[1] in cmds_to_skip:
+            return
+
+        # Запускаем крон только в главном потоке
         if threading.current_thread().name != "MainThread":
             return
 
         # Импортируем внутри, чтобы избежать циклических импортов
         from django.db import connection
+
         from timetable.cron_utils import create_update_timetable_cron_task
 
         # Пытаемся подключиться к БД

@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: mysql:8.0
@@ -22,11 +20,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        GITHUB_TOKEN: ${GITHUB_TOKEN}  # Берётся из .env
     container_name: django_app
     environment:
       - MYSQL_HOST=db
+      - DJANGO_DEBUG=true
       - MYSQL_DATABASE=timetable
       - MYSQL_USER=django_user
       - MYSQL_PASSWORD=django_pass
