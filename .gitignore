@@ -35,5 +35,5 @@ EOF
 temp/
 
 static/files
-
+logs/
 auth
