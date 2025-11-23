@@ -1,7 +1,3 @@
-
-console.log("JavaScript подключен и работает!");
-
-
 function adjustFontSizeToFit() {
     const titles = document.querySelectorAll('.card-title, .degree-title');
 
@@ -30,10 +26,6 @@ window.addEventListener('load', adjustFontSizeToFit);
 
 // Перезапускаем функцию при изменении размера окна
 window.addEventListener('resize', adjustFontSizeToFit);
-
-
-
-
 
 
 // Функция для определения семестра и учебного года
@@ -285,14 +277,6 @@ function resetFilters() {
     document.getElementById("course-select").disabled = true;
     document.getElementById("normativity-of-studying-periods-select").disabled = true;
 }
-
-
-
-
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
 

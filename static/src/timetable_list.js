@@ -1,5 +1,5 @@
-const url = 'http://127.0.0.1:81/timetable_params';
-const urlStatic = 'http://127.0.0.1:81/static/';
+const url = 'http://127.0.0.1/timetable_params';
+const urlStatic = 'http://127.0.0.1/static/';
 
 
 function adjustFontSizeToFit() {

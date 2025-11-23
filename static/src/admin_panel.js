@@ -1,6 +1,6 @@
 const csrftoken = getCookie("csrftoken");
-const url = "http://127.0.0.1:81/admin/";
-const urlStatic = "http://127.0.0.1:81/static/";
+const url = "http://127.0.0.1/admin/";
+const urlStatic = "http://127.0.0.1/static/";
 const secondsTimeWait = 600;
 /*---------- ИЗМЕНЕНИЕ КОНФИГУРАЦИИ СИСТЕМЫ -----------*/
 
@@ -92,9 +92,10 @@ document
 
     try {
       const response = await fetch(`${url}put_google_auth_file/`, {
-        method: "POST",
-        headers: { "X-CSRFToken": csrftoken },
+        method: 'POST',
+        headers: { 'X-CSRFToken': csrftoken },
         body: formData,
+        credentials: 'include',
       });
 
       const result = await response.json();
@@ -126,11 +127,12 @@ async function setSettings() {
 
   try {
     const response = await fetch(`${url}set_system_params/`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "X-CSRFToken": csrftoken,
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken,
       },
+      credentials: 'include',
       body: JSON.stringify(params),
     });
 
@@ -156,11 +158,12 @@ async function sendSystemSettings(params) {
 
   // Отправить запрос
   const response = await fetch(`${url}settings`, {
-    method: "POST", // Указываем метод запроса
+    method: 'POST', // Указываем метод запроса
     headers: {
-      "Content-Type": "application/json", // Указываем тип данных
-      "X-CSRFToken": csrftoken,
+      'Content-Type': 'application/json', // Указываем тип данных
+      'X-CSRFToken': csrftoken,
     },
+    credentials: 'include',
     body: JSON.stringify(params), // Преобразуем объект в JSON-строку
   });
 
@@ -202,11 +205,12 @@ async function sendAuthorizationFile() {
     // formData.append('isGoogleCredentials', 'true');
 
     const response = await fetch(`${url}auth`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "X-CSRFToken": csrftoken,
+        'X-CSRFToken': csrftoken,
       },
       body: formData,
+      credentials: 'include',
     });
 
     if (!response.ok) {
@@ -281,7 +285,9 @@ async function getSnapshot() {
 
 async function getSnapshotUrl(processId) {
   // Отправить запрос
-  const response = await fetch(`${url}snapshot?process_id=${processId}`);
+  const response = await fetch(`${url}snapshot?process_id=${processId}`, {
+    credentials: "include",
+  });
 
   // Завершить выполнение, если ответ некорректный
   if (response.ok) {
@@ -308,7 +314,9 @@ async function fillSnapshotDownloadUrls() {
 
 async function getLastSnapshotUrl(snapshot) {
   // Отправить запрос
-  const response = await fetch(`${url}snapshot?snapshot_type=${snapshot}`);
+  const response = await fetch(`${url}snapshot?snapshot_type=${snapshot}`, {
+    credentials: "include",
+  });
 
   // Завершить выполнение, если ответ некорректный
   if (!response.ok) {
@@ -405,7 +413,9 @@ async function dellData() {
 
 async function getDellResult(processId) {
   // Отправить запрос
-  const response = await fetch(`${url}manage_storage?process_id=${processId}`);
+  const response = await fetch(`${url}manage_storage?process_id=${processId}`, {
+    credentials: "include",
+  });
 
   // Завершить выполнение, если ответ некорректный
   if (response.ok) {
@@ -440,6 +450,7 @@ async function requestTimetableUpdate() {
         "Content-Type": "application/x-www-form-urlencoded",
         "X-CSRFToken": csrftoken,
       },
+      credentials: "include",
       body: params.toString(),
     });
 
@@ -457,10 +468,11 @@ async function requestTimetableUpdate() {
       const statusResponse = await fetch(
         `${url}update_timetable?process_id=${processId}`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
-            "X-CSRFToken": csrftoken,
+            'X-CSRFToken': csrftoken,
           },
+          credentials: 'include',
         }
       );
 
@@ -511,9 +523,10 @@ async function makeResponse(url_dir, responseType, params) {
   return fetch(`${url}${url_dir}`, {
     method: responseType, // Указываем метод запроса
     headers: {
-      "Content-Type": "application/json", // Указываем тип данных
-      "X-CSRFToken": csrftoken,
+      'Content-Type': 'application/json', // Указываем тип данных
+      'X-CSRFToken': csrftoken,
     },
+    credentials: 'include',
     body: JSON.stringify(params), // Преобразуем объект в JSON-строку
   });
 }
@@ -534,11 +547,12 @@ function downloadFile(url, filename) {
 async function makePostResponse(nextUrl, params) {
   // Отправить запрос
   const response = await fetch(`${url}${nextUrl}`, {
-    method: "POST", // Указываем метод запроса
+    method: 'POST', // Указываем метод запроса
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded", // Указываем тип данных
-      "X-CSRFToken": csrftoken,
+      'Content-Type': 'application/x-www-form-urlencoded', // Указываем тип данных
+      'X-CSRFToken': csrftoken,
     },
+    credentials: 'include',
     body: params.toString(), // Преобразуем объект в JSON-строку
   });
 

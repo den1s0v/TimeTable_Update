@@ -23,7 +23,7 @@ services:
     container_name: django_app
     environment:
       - MYSQL_HOST=db
-      - DJANGO_DEBUG=true
+      - DJANGO_DEBUG=false
       - MYSQL_DATABASE=timetable
       - MYSQL_USER=django_user
       - MYSQL_PASSWORD=django_pass
@@ -36,14 +36,13 @@ services:
       - static_volume:/app/staticfiles
       - logs_volume:/app/logs
       - temp_volume:/app/temp
-    # УБРАЛИ: - .:/app  ← больше не нужно!
+      - .:/app # ТОЛЬКО для отладки! Не в production! (чтобы не пересобирать образ при изменении)
 
   nginx:
     image: nginx:alpine
     container_name: nginx_proxy
     ports:
       - "80:80"
-      - "81:81"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - static_volume:/app/staticfiles
