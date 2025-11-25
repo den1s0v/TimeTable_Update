@@ -3,11 +3,8 @@ services:
     image: mysql:8.0
     container_name: mysql_db
     restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: timetable
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: django_user
-      MYSQL_PASSWORD: django_pass
+    env_file:
+      - .env
     volumes:
       - mysql_data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
@@ -22,12 +19,10 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: django_app
+    env_file:
+      - .env
     environment:
       - MYSQL_HOST=db
-      - DJANGO_DEBUG=false
-      - MYSQL_DATABASE=timetable
-      - MYSQL_USER=django_user
-      - MYSQL_PASSWORD=django_pass
     restart: unless-stopped
     depends_on:
       db:
