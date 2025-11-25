@@ -1,6 +1,5 @@
 FROM python:3.13-slim
 
-# УСТАНАВЛИВАЕМ git ПЕРВЫМ!
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     default-libmysqlclient-dev \
@@ -19,7 +18,6 @@ RUN mkdir -p staticfiles logs temp
 
 EXPOSE 8000
 
-CMD python manage.py makemigrations && \
-    python manage.py migrate && \
+CMD ["sh", "-c", "python manage.py migrate && \
     python manage.py collectstatic --noinput --clear && \
-    gunicorn timetable_project.wsgi:application --bind 0.0.0.0:8000
+    gunicorn timetable_project.wsgi:application --bind 0.0.0.0:8000"]

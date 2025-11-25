@@ -2,6 +2,7 @@ services:
   db:
     image: mysql:8.0
     container_name: mysql_db
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: timetable
       MYSQL_ROOT_PASSWORD: root
@@ -27,20 +28,23 @@ services:
       - MYSQL_DATABASE=timetable
       - MYSQL_USER=django_user
       - MYSQL_PASSWORD=django_pass
+    restart: unless-stopped
     depends_on:
       db:
         condition: service_healthy
     ports:
       - "8000:8000"
     volumes:
+      - /opt/vstu_schedule/snapshots:/app/staticfiles/snapshot
       - static_volume:/app/staticfiles
       - logs_volume:/app/logs
       - temp_volume:/app/temp
-      - .:/app # ТОЛЬКО для отладки! Не в production! (чтобы не пересобирать образ при изменении)
+      # - .:/app # ТОЛЬКО для отладки! Не в production! (чтобы не пересобирать образ при изменении)
 
   nginx:
     image: nginx:alpine
     container_name: nginx_proxy
+    restart: unless-stopped
     ports:
       - "80:80"
     volumes:

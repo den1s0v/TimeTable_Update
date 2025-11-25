@@ -1,6 +1,7 @@
 const csrftoken = getCookie("csrftoken");
-const url = "http://127.0.0.1/admin/";
-const urlStatic = "http://127.0.0.1/static/";
+const base = `${window.location.protocol}//${window.location.host}`;
+const url = `${base}/admin/`;
+const urlStatic = `${base}/static/`;
 const secondsTimeWait = 600;
 /*---------- ИЗМЕНЕНИЕ КОНФИГУРАЦИИ СИСТЕМЫ -----------*/
 
